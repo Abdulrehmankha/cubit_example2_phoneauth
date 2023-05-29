@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "318282592414",
+    "firebase_url": "https://smartboy-64f89.firebaseio.com",
+    "project_id": "smartboy-64f89",
+    "storage_bucket": "smartboy-64f89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318282592414:android:3fd7f87529a69a60a5cb8f",
+        "android_client_info": {
+          "package_name": "com.example.bloc_cubit_app2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318282592414-58ptm2p8pajsc1n9ajit2g9sprie5i71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bloc_cubit_app2",
+            "certificate_hash": "5f78f9e0168337302b58efef260ce496998d6e0f"
+          }
+        },
+        {
+          "client_id": "318282592414-batsde3qebsa2v1cdacb2gvamhrrmg02.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRq0BjDihPcv6i82fEB6i2v2EfB4Gkgvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318282592414-batsde3qebsa2v1cdacb2gvamhrrmg02.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
