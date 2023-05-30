@@ -7,7 +7,16 @@ class AuthCubit extends Cubit<AuthStates>{
 
   final FirebaseAuth _auth =  FirebaseAuth.instance;
 
-  AuthCubit() : super(AuthInitialState());
+  AuthCubit() : super(AuthInitialState()){
+    User? currentUser = _auth.currentUser;
+
+    if(currentUser != null){
+      emit(AuthLoggedInState(currentUser));
+    } else {
+      emit(AuthLoggedOutState());
+    }
+
+  }
 
   String? _verificationId;
 
@@ -51,5 +60,10 @@ class AuthCubit extends Cubit<AuthStates>{
       emit(AuthCodeErrorState(ex.message.toString()));
     }
 
+  }
+
+  void logOut()async{
+    await _auth.signOut();
+    emit(AuthLoggedOutState());
   }
 }

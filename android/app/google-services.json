@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:318282592414:android:3fd7f87529a69a60a5cb8f",
+        "mobilesdk_app_id": "1:318282592414:android:9864a99b4f7c9735a5cb8f",
         "android_client_info": {
           "package_name": "com.example.bloc_cubit_app2"
         }
       },
       "oauth_client": [
         {
-          "client_id": "318282592414-58ptm2p8pajsc1n9ajit2g9sprie5i71.apps.googleusercontent.com",
+          "client_id": "318282592414-1s4ks89kn8k2eh15dnce3n1ri3n16g89.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.bloc_cubit_app2",
-            "certificate_hash": "5f78f9e0168337302b58efef260ce496998d6e0f"
+            "certificate_hash": "278997aaf21c977ba1c9f25937ec37cb1e17a8aa"
           }
         },
         {

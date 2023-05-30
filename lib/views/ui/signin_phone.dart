@@ -1,6 +1,9 @@
+import 'package:bloc_cubit_app2/views/cubits/auth_cubits/auth_cubit.dart';
+import 'package:bloc_cubit_app2/views/cubits/auth_cubits/auth_state.dart';
 import 'package:bloc_cubit_app2/views/ui/otp_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 
@@ -243,37 +246,54 @@ class SignInWithPhone extends StatelessWidget {
                       height: responseHeight * 4,
                     ),
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 18, right: 18),
-                      child: SizedBox(
-                        height: responseHeight * 6,
-                        width: responseWidth * 90,
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              backgroundColor: const Color(0xff4162EF),
-                            ),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(builder: (context) => OtpScreen()));
-                              // if (_formkey.currentState!.validate()) {
-                                // loginController.sendOtp(
-                                //     context,
-                                //     loginController.countryCode.value,
-                                //     loginController.phoneController.text);
-                                //Navigator.pushNamed(context, '/otpscreen');
-                              //}
-                            },
-                            child: Text(
-                              "Next",
-                              style: TextStyle(
-                                color: const Color(0xffffffff),
-                                fontSize: responseText * 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                      ),
+                    BlocConsumer<AuthCubit, AuthStates>(
+                      builder: (context, state){
+
+                        if(state is AuthLoadingState){
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 18, right: 18),
+                          child: SizedBox(
+                            height: responseHeight * 6,
+                            width: responseWidth * 90,
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  backgroundColor: const Color(0xff4162EF),
+                                ),
+                                onPressed: () {
+                                  String phoneNumber = countryCode + phoneController.text;
+                                  BlocProvider.of<AuthCubit>(context).sendOtp(phoneNumber);
+                                  // if (_formkey.currentState!.validate()) {
+                                  // loginController.sendOtp(
+                                  //     context,
+                                  //     loginController.countryCode.value,
+                                  //     loginController.phoneController.text);
+                                  //Navigator.pushNamed(context, '/otpscreen');
+                                  //}
+                                },
+                                child: Text(
+                                  "Next",
+                                  style: TextStyle(
+                                    color: const Color(0xffffffff),
+                                    fontSize: responseText * 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                )),
+                          ),
+                        );
+                      },
+                      listener: (context, state){
+                        if(state is AuthCodeSentState){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => OtpScreen(phoneNumber: countryCode + phoneController.text)));
+                        }
+                      },
                     ),
 
                     SizedBox(
